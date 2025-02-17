@@ -9,6 +9,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  installed_apps:
+    git:
+      url: https://github.com/shatanikmahanty/installed_apps.git
+  just_audio: ^0.9.46
 
 dev_dependencies:
   flutter_test:
@@ -17,3 +21,6 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  assets:
+    - audio/congratulations.wav
+    - image/background.png
