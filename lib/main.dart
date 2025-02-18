@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:howmany_deepseeks/dialogs.dart';
 
 import 'package:installed_apps/app_info.dart';
 import 'package:installed_apps/installed_apps.dart';
@@ -20,45 +21,37 @@ void main() {
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
 
-  Future<List<AppInfo>> apps() async {
-    await play();
-    return await InstalledApps.getInstalledApps();
-  }
-
-  Future<void> play() async {
-    AudioPlayer audioPlayer = AudioPlayer();
-    audioPlayer.setAsset('audio/congratulations.wav');
-    await audioPlayer.play();
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        body: FutureBuilder(
-          future: apps(),
-          builder: (BuildContext context, AsyncSnapshot snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(
-                child: CircularProgressIndicator(
-                  year2023: false,
-                ),
-              );
-            } else if (snapshot.hasError) {
-              return Center(
-                child: Text("Error"),
-              );
-            } else {
-              final List<AppInfo> app = snapshot.data;
-              return ListView.builder(
-                itemCount: app.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return Text(app[index].name);
-                },
-              );
-            }
-          },
-        ),
+      title: "DeepSeeks有多少",
+      home: MainPage(),
+    );
+  }
+}
+
+class MainPage extends StatefulWidget {
+  const MainPage({super.key});
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: TextButton(
+            onPressed: () {
+              setState(() {
+                showDialog(
+                  context: context,
+                  builder: (context) => RequestDialog(),
+                );
+              });
+            },
+            child: Text("测试dialog")),
       ),
     );
   }

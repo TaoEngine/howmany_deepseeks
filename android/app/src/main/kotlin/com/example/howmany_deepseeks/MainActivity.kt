@@ -1,4 +1,4 @@
-package com.example.howmany_deepseeks
+package wangtao.howmany.deepseeks
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,9 +1,87 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/26.0.9 Chrome/128.0.6613.186 Electron/32.2.5 Safari/537.36" version="26.0.9">
   <diagram name="第 1 页" id="87IRfmedq-mZ3uFw9-FG">
-    <mxGraphModel dx="820" dy="866" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+    <mxGraphModel dx="2134" dy="1019" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
+        <mxCell id="27LEgjKncRxuM2OHvfH0-2" value="" style="edgeStyle=none;orthogonalLoop=1;jettySize=auto;html=1;rounded=0;" edge="1" parent="1">
+          <mxGeometry width="100" relative="1" as="geometry">
+            <mxPoint x="80" y="400" as="sourcePoint" />
+            <mxPoint x="1080" y="400" as="targetPoint" />
+            <Array as="points" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="27LEgjKncRxuM2OHvfH0-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="200" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-3" value="1.扫描一下手机上的应用列表（要用户允许的）" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="80" y="90" width="270" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="27LEgjKncRxuM2OHvfH0-6">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="400" y="400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="400" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-6" value="2.与我放在Github的规则列表做个对比" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="280" y="730" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="27LEgjKncRxuM2OHvfH0-8">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="400" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="600" y="260" />
+              <mxPoint x="601" y="400" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-8" value="3.显示喜报，展示有多少个嵌入DeepSeek的应用在你的手机里" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="420" y="90" width="350" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="27LEgjKncRxuM2OHvfH0-10">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-10" value="使用插件：installed_apps&lt;div&gt;扫描手机安装的应用列表&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-280" y="120" width="160" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-13" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="27LEgjKncRxuM2OHvfH0-12">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="200" y="260" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-12" value="是需要用户同意的，告诉他们&lt;div&gt;生成喜报前需要扫描他们的APP名字&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-280" y="240" width="220" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-20" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="27LEgjKncRxuM2OHvfH0-17">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint y="140" as="targetPoint" />
+            <Array as="points">
+              <mxPoint y="176" />
+              <mxPoint x="1" y="176" />
+              <mxPoint x="1" y="140" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-17" value="注意installed_apps不兼容Flutter3.29" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-120" y="210" width="220" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="27LEgjKncRxuM2OHvfH0-21">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="600" y="145" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="27LEgjKncRxuM2OHvfH0-21" value="音乐播放：just_audio" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="320" y="130" width="140" height="30" as="geometry" />
+        </mxCell>
       </root>
     </mxGraphModel>
   </diagram>
