@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 
 class RequestDialog extends StatelessWidget {
-  const RequestDialog({super.key});
+  final Function() doNext;
+
+  const RequestDialog({
+    super.key,
+    required this.doNext,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +31,7 @@ class RequestDialog extends StatelessWidget {
         ),
         Divider(),
         TextButton(
-          onPressed: () {},
+          onPressed: doNext,
           child: Text("继续"),
         )
       ],
@@ -34,14 +39,53 @@ class RequestDialog extends StatelessWidget {
   }
 }
 
+class SettingController extends ChangeNotifier {
+  bool _enableSound = true;
+  String _sourceURL = "";
+
+  bool get enableSound => _enableSound;
+  String get sourceURL => _sourceURL;
+
+  void setSound(bool value) {
+    _enableSound = value;
+    notifyListeners();
+  }
+
+  void setURL(String value) {
+    _sourceURL = value;
+    notifyListeners();
+  }
+}
+
 class SettingDialog extends StatefulWidget {
-  const SettingDialog({super.key});
+  final Function() doFinal;
+  final SettingController controller;
+
+  const SettingDialog({
+    super.key,
+    required this.doFinal,
+    required this.controller,
+  });
 
   @override
   State<SettingDialog> createState() => _SettingDialogState();
 }
 
 class _SettingDialogState extends State<SettingDialog> {
+  void refresh() => setState(() {});
+
+  @override
+  void initState() {
+    super.initState();
+    widget.controller.addListener(refresh);
+  }
+
+  @override
+  void dispose() {
+    widget.controller.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     const String titleText = "分析设置";
@@ -59,8 +103,8 @@ class _SettingDialogState extends State<SettingDialog> {
           leading: Icon(Icons.volume_up),
           title: Text(soundText),
           trailing: Switch(
-            value: true,
-            onChanged: (bool value) {},
+            value: widget.controller._enableSound,
+            onChanged: (bool value) => widget.controller.setSound(value),
           ),
         ),
         TextField(
@@ -70,10 +114,11 @@ class _SettingDialogState extends State<SettingDialog> {
             hintText: "默认为Github上的",
             labelText: "列表地址",
           ),
+          onChanged: (value) => widget.controller.setURL(value),
         ),
         Divider(),
         TextButton(
-          onPressed: () {},
+          onPressed: widget.doFinal,
           child: Text("开始"),
         ),
       ],

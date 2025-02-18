@@ -2,10 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:howmany_deepseeks/dialogs.dart';
 
-import 'package:installed_apps/app_info.dart';
-import 'package:installed_apps/installed_apps.dart';
-import 'package:just_audio/just_audio.dart';
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
@@ -38,6 +34,8 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
+  SettingController controller = SettingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,7 +45,10 @@ class _MainPageState extends State<MainPage> {
               setState(() {
                 showDialog(
                   context: context,
-                  builder: (context) => RequestDialog(),
+                  builder: (context) => SettingDialog(
+                    doFinal: () {},
+                    controller: controller,
+                  ),
                 );
               });
             },
