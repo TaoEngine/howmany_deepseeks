@@ -4,7 +4,7 @@ publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: ^3.6.1
+  sdk: ^3.7.0
 
 dependencies:
   flutter:
@@ -14,7 +14,7 @@ dependencies:
   installed_apps:
     git:
       url: https://github.com/shatanikmahanty/installed_apps.git
-  just_audio: ^0.9.46
+  # just_audio: ^0.9.46
   toml: ^0.16.0
 
 dev_dependencies:

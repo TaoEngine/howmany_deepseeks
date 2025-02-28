@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:howmany_deepseeks/dialogs.dart';
+import 'package:howmany_deepseeks/widget/dialogs.dart';
+import 'package:howmany_deepseeks/widget/xibao.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -19,10 +20,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "DeepSeeks有多少",
-      home: MainPage(),
-    );
+    return MaterialApp(title: "DeepSeeks有多少", home: MainPage());
   }
 }
 
@@ -34,25 +32,21 @@ class MainPage extends StatefulWidget {
 }
 
 class _MainPageState extends State<MainPage> {
-  SettingController controller = SettingController();
+  SettingController settingcontroller = SettingController();
+  XibaoWidgetController xibaocontroller = XibaoWidgetController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: TextButton(
-            onPressed: () {
-              setState(() {
-                showDialog(
-                  context: context,
-                  builder: (context) => SettingDialog(
-                    doFinal: () {},
-                    controller: controller,
-                  ),
-                );
-              });
-            },
-            child: Text("测试dialog")),
+      appBar: AppBar(title: Text("喜报")),
+      body: ListView(
+        children: [
+          XibaoWidget(controller: xibaocontroller),
+          TextButton(
+            onPressed: xibaocontroller.appCountAdd,
+            child: Text("测试用增数按钮"),
+          ),
+        ],
       ),
     );
   }
