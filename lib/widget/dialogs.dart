@@ -3,10 +3,7 @@ import 'package:flutter/material.dart';
 class RequestDialog extends StatelessWidget {
   final Function() doNext;
 
-  const RequestDialog({
-    super.key,
-    required this.doNext,
-  });
+  const RequestDialog({super.key, required this.doNext});
 
   @override
   Widget build(BuildContext context) {
@@ -21,19 +18,9 @@ class RequestDialog extends StatelessWidget {
       content: Text(contentText),
       actions: <Widget>[
         Divider(),
-        ListTile(
-          leading: Icon(Icons.apps_outage),
-          title: Text(requireText),
-          trailing: IconButton.filledTonal(
-            onPressed: () {},
-            icon: Icon(Icons.arrow_forward),
-          ),
-        ),
+        ListTile(leading: Icon(Icons.apps_outage), title: Text(requireText)),
         Divider(),
-        TextButton(
-          onPressed: doNext,
-          child: Text("继续"),
-        )
+        TextButton(onPressed: doNext, child: Text("继续")),
       ],
     );
   }
@@ -117,10 +104,7 @@ class _SettingDialogState extends State<SettingDialog> {
           onChanged: (value) => widget.controller.setURL(value),
         ),
         Divider(),
-        TextButton(
-          onPressed: widget.doFinal,
-          child: Text("开始"),
-        ),
+        TextButton(onPressed: widget.doFinal, child: Text("开始")),
       ],
     );
   }

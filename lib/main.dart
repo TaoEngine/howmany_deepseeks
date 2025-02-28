@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:howmany_deepseeks/widget/dialogs.dart';
 import 'package:howmany_deepseeks/widget/xibao.dart';
+import 'package:installed_apps/app_info.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,29 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: "DeepSeeks有多少", home: MainPage());
+    return MaterialApp(
+      title: "DeepSeeks有多少",
+      home: Builder(
+        builder: (context) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder:
+                  (context) =>
+                      RequestDialog(doNext: () => Navigator.pop(context, true)),
+            ).then((value) {
+              if (value == true) {
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(builder: (context) => MainPage()),
+                );
+              }
+            });
+          });
+          return Scaffold(body: Container());
+        },
+      ),
+    );
   }
 }
 
@@ -37,13 +60,23 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+    final AppInfo testinfo = AppInfo(
+      name: "name",
+      icon: null,
+      packageName: "packageName",
+      versionName: "versionName",
+      versionCode: 1,
+      builtWith: BuiltWith.flutter,
+      installedTimestamp: 1,
+    );
+
     return Scaffold(
       appBar: AppBar(title: Text("喜报")),
       body: ListView(
-        children: [
+        children: <Widget>[
           XibaoWidget(controller: xibaocontroller),
           TextButton(
-            onPressed: xibaocontroller.appCountAdd,
+            onPressed: () => xibaocontroller.addAppInfo(testinfo),
             child: Text("测试用增数按钮"),
           ),
         ],

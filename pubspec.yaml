@@ -26,4 +26,4 @@ flutter:
   uses-material-design: true
   assets:
     - audio/congratulations.wav
-    - image/background.png
+    - image/xibao.png
