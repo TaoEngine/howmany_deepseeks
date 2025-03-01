@@ -22,45 +22,42 @@ class AppRule {
 }
 
 class TomlRuleParser {
+  static final TomlRuleParser _instance = TomlRuleParser._internal();
   List<AppRule> _rules = [];
+  bool _isInitialized = false;
+
+  // 私有构造函数
+  TomlRuleParser._internal();
+
+  // 工厂构造函数返回单例
+  factory TomlRuleParser() => _instance;
 
   Future<void> init(String url) async {
-    // 获取TOML文件内容
+    if (_isInitialized) return; // 防止重复初始化
+
     final response = await http.get(Uri.parse(url));
     if (response.statusCode != 200) {
       throw Exception('我们连不上规则网址，出现 ${response.statusCode} 错误了');
     }
 
-    // 解析TOML
     final tomlDoc = TomlDocument.parse(utf8.decode(response.bodyBytes));
     final parsedToml = tomlDoc.toMap();
 
-    // 构建规则列表
     _rules =
-        parsedToml.entries
-            .where((entry) => entry.key != 'sort') // 暂时过滤sort配置项，现在还没用
-            .map((entry) {
-              final packageName = entry.key;
-              final data = entry.value as Map<String, dynamic>;
-              return AppRule(
-                package: packageName,
-                name: data['name'] as String,
-                type: data['type'] as String,
-                comment: data['comment'] as String,
-              );
-            })
-            .toList();
+        parsedToml.entries.where((entry) => entry.key != 'sort').map((entry) {
+          final data = entry.value as Map<String, dynamic>;
+          return AppRule(
+            package: entry.key,
+            name: data['name'] as String,
+            type: data['type'] as String,
+            comment: data['comment'] as String,
+          );
+        }).toList();
+
+    _isInitialized = true;
   }
 
   List<AppRule> getRule() {
-    return _rules.toList(growable: false); // 返回不可修改列表
+    return _rules.toList(growable: false);
   }
-}
-
-void main() async {
-  TomlRuleParser tomlRuleParser = TomlRuleParser();
-  await tomlRuleParser.init(
-    "https://raw.githubusercontent.com/TaoEngine/howmany_deepseeks/refs/heads/main/rules/deepseeks.toml",
-  );
-  tomlRuleParser.getRule().forEach(print);
 }

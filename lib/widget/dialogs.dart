@@ -10,7 +10,8 @@ class RequestDialog extends StatelessWidget {
     const String titleText = "分析前需要告知";
     const String contentText =
         "这个应用需要比对你手机上的所有应用，\n因此我有必要提前告知并且请求获取相应权限。\n如果你同意授予权限请在此对话框中进行操作。";
-    const String requireText = "读取应用列表";
+    const List<String> requireText = ["读取应用列表"];
+    const List<IconData> requireIcon = [Icons.apps_outage];
 
     return AlertDialog(
       icon: Icon(Icons.query_stats),
@@ -18,7 +19,7 @@ class RequestDialog extends StatelessWidget {
       content: Text(contentText),
       actions: <Widget>[
         Divider(),
-        ListTile(leading: Icon(Icons.apps_outage), title: Text(requireText)),
+        ListTile(leading: Icon(requireIcon[0]), title: Text(requireText[0])),
         Divider(),
         TextButton(onPressed: doNext, child: Text("继续")),
       ],

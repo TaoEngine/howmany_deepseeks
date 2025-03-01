@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:howmany_deepseeks/func/ruleparse.dart';
 
 import 'package:howmany_deepseeks/widget/dialogs.dart';
 import 'package:howmany_deepseeks/widget/xibao.dart';
@@ -35,7 +36,11 @@ class MainApp extends StatelessWidget {
               builder:
                   (context) =>
                       RequestDialog(doNext: () => Navigator.pop(context, true)),
-            ).then((value) {
+            ).then((value) async {
+              TomlRuleParser tomlRuleParser = TomlRuleParser();
+              await tomlRuleParser.init(
+                "https://ghfile.geekertao.top/https://raw.githubusercontent.com/TaoEngine/howmany_deepseeks/refs/heads/main/rules/deepseeks.toml",
+              );
               if (value == true) {
                 Navigator.of(context).pushReplacement(
                   MaterialPageRoute(builder: (context) => MainPage()),
@@ -64,12 +69,7 @@ class ErrorPage extends StatelessWidget {
       body: Center(
         child: SizedBox(
           height: 100,
-          child: Column(
-            children: [
-              //Image.asset(""),
-              Text("你没有为我申请权限，要不退出重进？"),
-            ],
-          ),
+          child: Column(children: [Text("你没有为我申请权限，要不退出重进？")]),
         ),
       ),
     );
@@ -86,6 +86,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   SettingController settingcontroller = SettingController();
   XibaoWidgetController xibaocontroller = XibaoWidgetController();
+  TomlRuleParser tomlRuleParser = TomlRuleParser();
 
   @override
   Widget build(BuildContext context) {
@@ -96,17 +97,20 @@ class _MainPageState extends State<MainPage> {
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             final List<AppInfo> appManual = snapshot.data;
+            final List<AppRule> appRule = tomlRuleParser.getRule();
+            final List<AppInfo> appFinal = [];
+
+            for (var app in appManual) {
+              for (var rule in appRule) {
+                if (rule.package == app.packageName) {
+                  appFinal.add(app);
+                  xibaocontroller.addAppInfo(app);
+                }
+              }
+            }
 
             return ListView(
-              children: <Widget>[
-                XibaoWidget(controller: xibaocontroller),
-                TextButton(
-                  onPressed: () {
-                    appManual.forEach(xibaocontroller.addAppInfo);
-                  },
-                  child: Text("测试用增数按钮"),
-                ),
-              ],
+              children: <Widget>[XibaoWidget(controller: xibaocontroller)],
             );
           } else {
             return Center(

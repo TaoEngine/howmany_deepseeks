@@ -26,3 +26,38 @@ comment = "内测用户可以在搜索栏中调用DeepSeek进行搜索，其他�
 name = "小爱同学"
 type = "系统应用"
 comment = "对小爱同学说“打开深度思考”就可以用了"
+
+["com.tencent.huanyuan.app.chat"]
+name = "腾讯元宝"
+type = "实用工具"
+comment = "本职是做焕元大模型的，你知道的TX喜欢哪个火做哪个"
+
+["com.qihoo.namiso"]
+name = "纳米搜索"
+type = "实用工具"
+comment = "周红衣教主做的DeepSeek镜像，但是非常坑人，主打从DeepSeek那儿吸血，还吸用户的血"
+
+["com.baidu.searchbox"]
+name = "百度APP"
+type = "实用工具"
+comment = "百度嘛，你知道的，哪个火做哪个，对了莆田医院也接入了DeepSeek哦！"
+
+["com.yuanshi.wenxiaobai"]
+name = "问小白"
+type = "实用工具"
+comment = "本质是做AI搜索，和秘塔一样，不过没它火"
+
+["com.kuaiduizuoye.scan"]
+name = "快对"
+type = "学习教育"
+comment = "一个拍题软件怎么搞的全力DeepSeek进发，有点本末倒置了哈"
+
+["com.zmzx.college.search"]
+name = "大学搜题酱"
+type = "学习教育"
+comment = "一个拍题软件怎么搞的全力DeepSeek进发，有点本末倒置了哈"
+
+["app.shadiao.jingluo"]
+name = "鲸落文案"
+type = "效率办公"
+comment = "一个小而美的DeepSeek应用"
