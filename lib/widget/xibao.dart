@@ -59,7 +59,7 @@ class _XibaoWidgetState extends State<XibaoWidget> {
     final List<Widget> appIconsWidget = List.generate(
       widget.controller.appCount,
       (count) {
-        if (appIcons[count] != null) {
+        if (appIcons[count] != null && appIcons[count]!.isNotEmpty) {
           return Image.memory(appIcons[count]!);
         } else {
           return Icon(
@@ -89,7 +89,7 @@ class _XibaoWidgetState extends State<XibaoWidget> {
           Padding(
             padding: EdgeInsets.only(top: 100),
             child: SizedBox(
-              height: 200,
+              height: 195,
               child: Padding(
                 padding: EdgeInsets.only(left: 10, right: 10),
                 child: GridView.extent(

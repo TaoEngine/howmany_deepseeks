@@ -27,3 +27,4 @@ flutter:
   assets:
     - audio/congratulations.wav
     - image/xibao.png
+    - image/check.png
